@@ -1,52 +1,52 @@
-// import Pagination from "@/Components/Pagination";
-// import SelectInput from "@/Components/SelectInput";
-// import TextInput from "@/Components/TextInput";
+import Pagination from "@/Components/Pagination";
+import SelectInput from "@/Components/SelectInput";
+import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-// import {
-//   PROJECT_STATUS_CLASS_MAP,
-//   PROJECT_STATUS_TEXT_MAP,
-// } from "@/constants.jsx";
+import {
+  PROJECT_STATUS_CLASS_MAP,
+  PROJECT_STATUS_TEXT_MAP,
+} from "@/constants.jsx";
 import { Head, Link, router } from "@inertiajs/react";
-// import TableHeading from "@/Components/TableHeading";
+import TableHeading from "@/Components/TableHeading";
 
 export default function Index({ auth, projects, queryParams = null, success }) {
-  // queryParams = queryParams || {};
-  // const searchFieldChanged = (name, value) => {
-  //   if (value) {
-  //     queryParams[name] = value;
-  //   } else {
-  //     delete queryParams[name];
-  //   }
+  queryParams = queryParams || {};
+  const searchFieldChanged = (name, value) => {
+    if (value) {
+      queryParams[name] = value;
+    } else {
+      delete queryParams[name];
+    }
 
-  //   router.get(route("project.index"), queryParams);
-  // };
+    router.get(route("project.index"), queryParams);
+  };
 
-  // const onKeyPress = (name, e) => {
-  //   if (e.key !== "Enter") return;
+  const onKeyPress = (name, e) => {
+    if (e.key !== "Enter") return;
 
-  //   searchFieldChanged(name, e.target.value);
-  // };
+    searchFieldChanged(name, e.target.value);
+  };
 
-  // const sortChanged = (name) => {
-  //   if (name === queryParams.sort_field) {
-  //     if (queryParams.sort_direction === "asc") {
-  //       queryParams.sort_direction = "desc";
-  //     } else {
-  //       queryParams.sort_direction = "asc";
-  //     }
-  //   } else {
-  //     queryParams.sort_field = name;
-  //     queryParams.sort_direction = "asc";
-  //   }
-  //   router.get(route("project.index"), queryParams);
-  // };
+  const sortChanged = (name) => {
+    if (name === queryParams.sort_field) {
+      if (queryParams.sort_direction === "asc") {
+        queryParams.sort_direction = "desc";
+      } else {
+        queryParams.sort_direction = "asc";
+      }
+    } else {
+      queryParams.sort_field = name;
+      queryParams.sort_direction = "asc";
+    }
+    router.get(route("project.index"), queryParams);
+  };
 
-  // const deleteProject = (project) => {
-  //   if (!window.confirm("Are you sure you want to delete the project?")) {
-  //     return;
-  //   }
-  //   router.delete(route("project.destroy", project.id));
-  // };
+  const deleteProject = (project) => {
+    if (!window.confirm("Are you sure you want to delete the project?")) {
+      return;
+    }
+    router.delete(route("project.destroy", project.id));
+  };
 
   return (
     <AuthenticatedLayout
@@ -62,13 +62,12 @@ export default function Index({ auth, projects, queryParams = null, success }) {
           >
             Add new
           </Link>
-          <pre>{JSON.stringify(projects,undefined,2)}</pre>
         </div>
       }
     >
       <Head title="Projects" />
 
-      {/* <div className="py-12">
+      <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           {success && (
             <div className="bg-emerald-500 py-2 px-4 text-white rounded mb-4">
@@ -219,7 +218,7 @@ export default function Index({ auth, projects, queryParams = null, success }) {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </AuthenticatedLayout>
   );
 }
