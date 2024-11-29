@@ -73,7 +73,7 @@ export default function TasksTable({
                 <th className="px-3 py-3">Project Name</th>
               )}
               <TableHeading
-                name="name"
+                name="task name"
                 sort_field={queryParams.sort_field}
                 sort_direction={queryParams.sort_direction}
                 sortChanged={sortChanged}
